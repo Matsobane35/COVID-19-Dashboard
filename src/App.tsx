@@ -52,11 +52,13 @@ function App() {
             <p onClick={() => {setOpenDatePicker(true); setDateRangeBound("To")}} className="h-12 md:w-full flex-1 md:h-10 rounded-[1000px] bg-purple-500 hover:bg-[#ce96ff] px-4 flex items-center justify-center text-[1rem] md:text-[0.9rem] text-black font-semibold hover:cursor-pointer"><span className="line-clamp-1">{`To: ${currentDateRange.end.getDate()} ${["Jan", "Feb", "Mar"][currentDateRange.end.getMonth()]} 2020`}</span></p>
           </div>
         </div>
+        {/** Line graph */}
         <CustomChart
         country={selectedCountry}
         dateRange={currentDateRange}
         metric={selectedMetric}
         chartType="line"/>
+        {/** Bar graph */}
         <CustomChart
         country={selectedCountry}
         dateRange={currentDateRange}
