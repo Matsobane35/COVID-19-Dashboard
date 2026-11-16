@@ -19,35 +19,18 @@ export default function CustomChart(
         chart: { background: "#f0f0f0", toolbar: { show: false } },
         grid: { padding: { left: 40, bottom: 60, right: 40 } },
         stroke: { curve: "smooth" },
-        plotOptions: {
-          bar: { dataLabels: { position: "top" } }
-        },
-        dataLabels: {
-          enabled: chartType === "bar",
-          offsetY: -20,
-          style: { colors: ["#444"] }
-        },
+        plotOptions: { bar: { dataLabels: { position: "top" } } },
+        dataLabels: { enabled: false },
         xaxis: {
           type: "datetime",
           min: dateRange.start.getTime(),
           max: dateRange.end.getTime(),
           labels: { rotate: -45, rotateAlways: true, hideOverlappingLabels: false, format: "yyyy-MM-dd", datetimeUTC: false },
-          title: {
-            text: "Dates",
-            offsetY: 50,
-            style: {
-              fontSize: "14px"
-            }
-          }
+          title: { text: "Dates", offsetY: 50, style: { fontSize: "14px" } }
         },
         yaxis: {
           labels: { padding: 40 },
-          title: {
-            text: `Number of ${chartType === "line" ? metric : "new cases"}`,
-            offsetX: 10,
-            style: {
-              fontSize: "14px"
-            }
+          title: { text: `Number of ${chartType === "line" ? metric : "new cases"}`, offsetX: 10, style: { fontSize: "14px" }
           }
         }
       }}
