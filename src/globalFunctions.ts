@@ -16,20 +16,18 @@ export function getSeries(data: typeof covidData.countries[0]["data"], metric: s
 export function getIncrementalSeries(data: typeof covidData.countries[0]["data"], frequency: string): { x: number, y: number }[] {
   if (frequency === "daily") {
     const totalDays = Math.round((createDate(data[data.length-1].date).getTime() - createDate(data[0].date).getTime())/(1000*60*60*24))
-    const dailyDays: number[] = [createDate(data[0].date).getTime()]
-    const dailyCases: number[] = [data[0].confirmed]
+    const dailyDays = [createDate(data[0].date).getTime()]
+    const dailyCases = [data[0].confirmed]
     for (let i = 1; i <= totalDays; i++) {
       dailyDays.push(Math.round(dailyDays[0] + i*(1000*60*60*24)))
     }
     for (let i1 = 0; i1 <= data.length - 2; i1++) {
       const daysPerInterval = Math.round((createDate(data[i1+1].date).getTime() - createDate(data[i1].date).getTime())/(1000*60*60*24))
+      const casesPerDay = (data[i1+1].confirmed - data[i1].confirmed)/daysPerInterval
       for (let i2 = 1; i2 <= daysPerInterval; i2++) {
-        const casesPerDay = (data[i1+1].confirmed - data[i1].confirmed)/daysPerInterval
         dailyCases.push(Math.round((casesPerDay + Number.EPSILON)*100)/100)
       }
     }
-    console.log(dailyDays)
-    console.log(dailyCases)
     return dailyDays.map((day, index) => ({ x: day, y: dailyCases[index] }))
   }
   else {

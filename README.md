@@ -7,6 +7,35 @@ This project is a single-page web dashboard that shows COVID-19 outbreak trends 
 # Project setup and library choices
 This is a Vite-instantiated React project that uses TypeScript as the programming language and Tailwind CSS as the styling framework. The chart library used is the ReactApexCharts library, which was chosen for its feature-completeness and customizability. 
 
+## Prerequisites 
+Ensure your local machine meets the following environment requirements before installation:
+
+* **Node.js:** v24.18.0 or higher
+* **Package manager:** 'npm' v12.2.1 (this repo tracks 'package-lock.json', so avoid mixing with 'yarn' or 'pnpm')
+
+## Installation
+Clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/Matsobane35/COVID-19-Dashboard.git
+cd COVID-19-Dashboard
+npm install
+```
+
+> **Note on ApexCharts Dependencies:** If you encounter peer-dependency conflicts with 'react-apexcharts' during installation, try running the following command:
+> ```bash
+> npm install --legacy-peer-deps
+> ```
+
+## Running the development Server
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+* Now navigate to the provided localhost url in your browser
+
 # Interacting with the dashboard
 There are two charts on the page. The first one is a line graph that displays four main metrics: confirmed cases, deaths, recoveries and active cases. The user can select which metric to view from the 'select metric' section above the chart. The second chart is a bar graph showing the number of new COVID-19 cases, calculated by taking the difference between two adjacent data points. 
 
